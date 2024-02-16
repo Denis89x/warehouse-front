@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+.main-page {
+    min-height: 100vh;
+    width: 100%;
+    background: #f3f3f3;
+    padding-top: 120px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 22% 15px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    z-index: 999;
+    -webkit-box-shadow: 0 9px 21px -16px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0 9px 21px -16px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 9px 21px -16px rgba(34, 60, 80, 0.2);
+}
+
+.header-entities {
+    display: flex;
+    gap: 20px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    transition: 0.4s;
+}
+
+a:hover {
+    color: #868686;
+}
+
+.navbar-logo svg {
+    font-size: 30px;
+    color: black;
+}
+
+.navbar-logo {
+    display: flex;
+    padding-bottom: 15px;
+}
+
+.search-bar {
+    width: 250px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.search-bar button {
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+}
+
+.search-bar input::placeholder {
+    color: black;
+}
+
+.search-bar button svg {
+    padding-top: 5px;
+    font-size: 30px;
+    color: black;
+}
+
+.button {
+    background: black;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+    padding: 8px 25px;
+    width: 130px;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.button:hover {
+    background: #1042da;
+}
+
+.table-container {
+    max-height: 400px;
+    overflow-y: scroll;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    background: white;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #000000;
+    border-bottom: 1px solid #ddd;
+    color: white;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+.link-header {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+}
+
+.link-header a {
+    font-size: 14px;
+    color: gray;
+    padding-right: 2px;
+}
+
+.link-header a:hover {
+    color: #4a4a4a;
+}
+
+.link-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 25px;
+}
+
+.crud-form input, select {
+    background: transparent;
+    border: #bababa 1px solid;
+    border-radius: 4px;
+    padding: 6px 6px 6px 10px;
+    color: #000000;
+    font-weight: 500;
+    font-style: italic;
+    flex: 1;
+    width: calc(100% - 100px);
+    margin-right: 40px;
+}
+
+.crud-form label {
+    color: #484848;
+    font-weight: 500;
+    width: 130px;
+    flex-shrink: 0;
+    text-align: left;
+}
+
+.crud-form {
+    padding-top: 30px;
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.crud-form-date input {
+    width: 255px;
+    color: gray;
+}
+
+.crud-form-select select {
+    color: gray;
+}
+
+.crud-form-select select:hover {
+    color: black;
+}
+
+.crud-form-select select:focus {
+    background: transparent;
+    color: black;
+}
+
+.actions-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.crud-table {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.crud-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.crud-actions button {
+    width: 100px;
+    height: 25px;
+    padding: 1px;
+}
+
+.create-block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.back {
+    display: flex;
+    width: 500px;
+}
+
+.back-btn {
+    background: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 25px 8px 15px;
+    font-size: 16px;
+    transition: 0.6s;
+}
+
+.back-btn:hover {
+    color: white;
+    background: #050e2a;
+}
+
+.back-btn-inside {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.back-btn-inside svg {
+    font-size: 20px;
+}
+
+.back-btn-inside span {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.form {
+    width: 500px;
+    background: white;
+    border-radius: 8px;
+    padding-left: 40px;
+    padding-top: 50px;
+}
+
+.form p {
+    font-size: 14px;
+    font-weight: 500;
+    color: gray;
+}
+
+.table-div {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.create-type-btn button {
+    width: 15%;
+}
+
+.create-type-btn svg {
+    font-size: 30px;
+}
+
+.create-type-inside {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.crud-query-actions {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+}
+
+.refresh-btn {
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    padding: 8px 10px 0 10px;
+}
+
+.crud-actions-container {
+    display: flex;
+    justify-content: space-between;
+}

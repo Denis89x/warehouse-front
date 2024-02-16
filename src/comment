@@ -1,0 +1,53 @@
+                        {/*<div className={"crud-form"}>
+                            <label htmlFor="title">Title</label>
+                            <input
+                                id={"title"}
+                                type="text"
+                                required
+                                placeholder={"Title"}
+                                onChange={(e) => handleInputChange(e, 'title')}
+                            />
+                        </div>
+                        <div className={"crud-form crud-form-date"}>
+                            <label htmlFor="date">Date</label>
+                            <DatePicker
+                                className={"crud-form-date"}
+                                id={"date"}
+                                selected={selectedDate}
+                                onChange={date => handleDateChange(date)} // Обрабатываем null
+                                dateFormat="yyyy-MM-dd"
+                            />
+                        </div>
+                        <div className={"crud-form"}>
+                            <label htmlFor="cost">Cost</label>
+                            <input
+                                id={"cost"}
+                                type="text"
+                                required
+                                placeholder={"Cost"}
+                                onChange={(e) => handleInputChange(e, 'cost')}
+                            />
+                        </div>
+                        <div className={"crud-form"}>
+                            <label htmlFor="description">Description</label>
+                            <input
+                                id={"description"}
+                                type="text"
+                                required
+                                placeholder={"Description"}
+                                onChange={(e) => handleInputChange(e, 'description')}
+                            />
+                        </div>*/}
+                        {/*<div className={"crud-form crud-form-select"}>
+                            <label htmlFor="productType">Product Type</label>
+                            <select
+                                id={"productType"}
+                                onChange={handleSelectChange}
+                            >
+                                {productTypes.map(productType => (
+                                    <option key={productType.productTypeId} value={productType.productTypeId}>
+                                        {productType.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>*/}

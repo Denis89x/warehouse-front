@@ -1,0 +1,52 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 26%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header span {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-header span:hover, span:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-select input  {
+    margin-right: 0;
+}
+
+.modal-select select {
+    margin-right: 0;
+}
+
+.modal-btn {
+    width: 50%;
+    margin-top: 30px;
+}
