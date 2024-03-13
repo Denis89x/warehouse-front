@@ -33,8 +33,6 @@ interface SupplierContextProviderProps {
 export const SupplierContextProvider: React.FC<SupplierContextProviderProps> = ({children}) => {
     const [supplier, setSupplier] = useState<Supplier[]>([]);
 
-    console.log(`token: ${getToken()}`)
-
     const updateSupplier = async () => {
         try {
             const token = getToken();

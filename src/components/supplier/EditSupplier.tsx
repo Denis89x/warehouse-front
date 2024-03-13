@@ -114,7 +114,7 @@ export const EditSupplier: React.FC = () => {
                     </Link>
                 </div>
                 {violations.length > 0 && <ErrorFieldHandler violations={violations} auth={false}/>}
-                <div className={"form supplier-form"}>
+                <div className={"form"}>
                     <form action="">
                         <div className={"link-header"}>
                             <p>

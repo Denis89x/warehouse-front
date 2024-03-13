@@ -12,8 +12,6 @@ interface RegistrationFormData {
     username: string;
     password: string;
     email: string;
-    firstname: string;
-    surname: string;
 }
 
 interface Violation {
@@ -35,8 +33,6 @@ const RegistrationPage: React.FC<RegistrationPageProps> = ({handleLoginClick, ha
         username: '',
         password: '',
         email: '',
-        firstname: 'none',
-        surname: 'none'
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof RegistrationFormData) => {
@@ -51,12 +47,9 @@ const RegistrationPage: React.FC<RegistrationPageProps> = ({handleLoginClick, ha
                 const data = response.data;
 
                 if ('access_token' in data && 'refresh_token' in data) {
-
                     saveToken(data.access_token);
-
                     saveToken(data.refresh_token, true);
 
-                    console.log(localStorage.getItem('token'));
                     navigate('/type');
                 } else {
                     console.error('Access token or refresh token not found in response.');
@@ -94,7 +87,7 @@ const RegistrationPage: React.FC<RegistrationPageProps> = ({handleLoginClick, ha
                 <div className="input-box">
                     <span className="icon"><i className='bx bxs-envelope'></i></span>
                     <input
-                        type="email"
+                        type="text"
                         required
                         value={registrationFormData.email}
                         onChange={(e) => handleInputChange(e, 'email')}

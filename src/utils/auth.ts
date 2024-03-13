@@ -1,4 +1,5 @@
 import axios from "axios";
+import {NavigateFunction, useNavigate} from "react-router-dom";
 
 export const saveToken = (token: string, isRefreshToken: boolean = false) => {
     const tokenKey = isRefreshToken ? 'refresh-token' : 'token';
@@ -24,8 +25,9 @@ export const removeToken = (isRefreshToken: boolean = false) => {
     localStorage.removeItem(tokenKey);
 };
 
-export const checkAndRefreshToken = async () => {
+export const checkAndRefreshToken = async (navigate: NavigateFunction) => {
     const tokenTimestamp = getTokenTimestamp();
+    console.error("OKKKKKKKKKKKKKK")
 
     if (tokenTimestamp) {
         const lastAuthTime = tokenTimestamp;
@@ -37,25 +39,27 @@ export const checkAndRefreshToken = async () => {
             const refreshToken = getToken(true);
             if (refreshToken) {
                 try {
+                    console.error("1")
                     const headers = {
                         Authorization: `Bearer ${refreshToken}`
                     };
 
+                    console.error("2")
                     const response = await axios.post('http://localhost:8080/api/v1/auth/refresh-token', {}, {
                         headers,
                     });
 
+                    console.error("3")
                     if (response.status === 200) {
                         const data = response.data;
                         saveToken(data.access_token);
                         localStorage.setItem('token-timestamp', new Date().getTime().toString());
+                        console.error("4")
                     } else {
-                        console.error('Failed to refresh access token.');
-                        // Возможно, здесь нужно выполнить logout, если обновление не удалось
+                        navigate('/auth')
                     }
                 } catch (error) {
-                    console.error('Error during token refresh:', error);
-                    // Возможно, здесь нужно выполнить logout, если обновление не удалось
+                    navigate('/auth')
                 }
             }
         }

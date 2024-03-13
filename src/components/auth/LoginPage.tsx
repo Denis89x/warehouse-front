@@ -3,7 +3,6 @@ import './Auth.css'
 import axios from "axios";
 import {saveToken} from "../../utils/auth";
 import {useNavigate} from 'react-router-dom';
-import ErrorFieldHandler from "../error/ErrorFieldHandler";
 
 interface LoginPageProps {
     handleRegistrationClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
@@ -21,7 +20,7 @@ interface Violation {
     message: string;
 }
 
-const LoginPage : React.FC<LoginPageProps> = ({ handleRegistrationClick, handleValidationErrors, handleViolations }) => {
+const LoginPage: React.FC<LoginPageProps> = ({handleRegistrationClick, handleValidationErrors, handleViolations}) => {
     const navigate = useNavigate();
     const [violations, setViolations] = useState<Violation[]>([]);
 
@@ -31,15 +30,20 @@ const LoginPage : React.FC<LoginPageProps> = ({ handleRegistrationClick, handleV
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof LoginFormData) => {
-        setLoginFormData({ ...loginFormData, [field]: e.target.value });
+        setLoginFormData({...loginFormData, [field]: e.target.value});
     };
 
     const handleLogin = async () => {
         try {
+            console.error("123123")
             const response = await axios.post('http://localhost:8080/api/v1/auth/authenticate', loginFormData);
+
+            console.error("124: " + response);
 
             if (response.status === 200) {
                 const data = response.data;
+
+                console.error("RESPONSE: " + response);
 
                 if ('access_token' in data && 'refresh_token' in data) {
                     saveToken(data.access_token);
@@ -48,20 +52,16 @@ const LoginPage : React.FC<LoginPageProps> = ({ handleRegistrationClick, handleV
                     navigate('/type');
                 } else {
                     console.error('Access token or refresh token not found in response.');
+                    console.error("RESPONSE: " + response);
                 }
             } else {
-                console.error('LoginPage.tsx failed.');
+                console.error('LoginPage failed.');
+                console.error("RESPONSE: " + response);
             }
         } catch (error: any) {
-            if (error.response && error.response.data.violations) {
-                setViolations(error.response.data.violations);
-                handleValidationErrors(true);
-                handleViolations(error.response.data.violations);
-            } else {
-                setViolations([{fieldName: '', message: 'An error occurred.'}]);
-                handleValidationErrors(true);
-                handleViolations(error.response.data.violations);
-            }
+            setViolations([{fieldName: 'Username', message: error.response.data}])
+            handleValidationErrors(true);
+            handleViolations([{fieldName: 'Username', message: error.response.data}]);
         }
     };
 

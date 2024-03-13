@@ -6,6 +6,7 @@ import {useProductContext} from "../product/ProductContext";
 import {DateFilter} from "../filter/DateFilter";
 import '../General.css'
 import './Order.css'
+import {Link} from "react-router-dom";
 
 export const FetchOrder = () => {
     const {order, updateOrder, searchOrder} = useOrderContext();
@@ -37,43 +38,6 @@ export const FetchOrder = () => {
             console.error('Error during registration:', error);
         }
     };
-
-    const handleExcel = async () => {
-        try {
-            const token = getToken();
-
-            const headers = {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            };
-
-            const response = await axios.get(`http://localhost:8080/api/v1/orders/excel`, {
-                headers,
-                responseType: 'blob',
-            });
-
-            if (response.status === 200) {
-                console.log("status 200");
-
-                const url = window.URL.createObjectURL(new Blob([response.data]));
-
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'Order.xlsx');
-                document.body.appendChild(link);
-
-                link.click();
-
-                // Очистите URL после скачивания файла
-                window.URL.revokeObjectURL(url);
-            } else {
-                console.error('Failed');
-            }
-
-        } catch (error) {
-            console.error('Error during registration:', error);
-        }
-    }
 
     const formatDateFromArray = (dateArray: number[]) => {
         const [year, month, day] = dateArray;
@@ -122,20 +86,22 @@ export const FetchOrder = () => {
                                   d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path>
                         </svg>
                     </button>
-                    <button
-                        className="button refresh-btn"
-                        type="button"
-                        onClick={handleExcel}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
-                            <g fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={4}>
-                                <path strokeLinejoin="round"
-                                      d="M8 15V6a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v36a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-9"></path>
-                                <path d="M31 15h3m-6 8h6m-6 8h6"></path>
-                                <path strokeLinejoin="round" d="M4 15h18v18H4zm6 6l6 6m0-6l-6 6"></path>
-                            </g>
-                        </svg>
-                    </button>
+                    <Link to={"/order-excel"}>
+                        <button
+                            className="button refresh-btn"
+                            type="button"
+                            //onClick={handleExcel}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={4}>
+                                    <path strokeLinejoin="round"
+                                          d="M8 15V6a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v36a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-9"></path>
+                                    <path d="M31 15h3m-6 8h6m-6 8h6"></path>
+                                    <path strokeLinejoin="round" d="M4 15h18v18H4zm6 6l6 6m0-6l-6 6"></path>
+                                </g>
+                            </svg>
+                        </button>
+                    </Link>
                 </div>
                 <DateFilter/>
             </div>
@@ -170,8 +136,16 @@ export const FetchOrder = () => {
                                     <div>
                                         <button onClick={() => handleDelete(order.orderId)}
                                                 type={"button"}
-                                                className={"button"}>
-                                            Delete
+                                                className={"button right-btn"}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                 viewBox="0 0 24 24">
+                                                <g fill="none">
+                                                    <path
+                                                        d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"></path>
+                                                    <path fill="currentColor"
+                                                          d="M20 5a1 1 0 1 1 0 2h-1l-.003.071l-.933 13.071A2 2 0 0 1 16.069 22H7.93a2 2 0 0 1-1.995-1.858l-.933-13.07A1.017 1.017 0 0 1 5 7H4a1 1 0 0 1 0-2zm-3.003 2H7.003l.928 13h8.138zM14 2a1 1 0 1 1 0 2h-4a1 1 0 0 1 0-2z"></path>
+                                                </g>
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>

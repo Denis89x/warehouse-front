@@ -157,7 +157,7 @@ export const CreateOrder = () => {
                     </Link>
                 </div>
                 {violations.length > 0 && <ErrorFieldHandler violations={violations} auth={false}/>}
-                <div className={"form product-form"}>
+                <div className={"form"}>
                     <form action="">
                         <div className={"link-header"}>
                             <p>

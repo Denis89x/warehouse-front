@@ -35,19 +35,19 @@ export const DateFilter = () => {
     return (
         <div className="date-filter-container">
             <div className={"crud-form-date-filter"}>
-                <label htmlFor="date">Start date</label>
+                <label htmlFor="startDate">Start date</label>
                 <DatePicker
-                    id={"date"}
+                    id={"startDate"}
                     selected={selectedStartDate}
                     onChange={date => handleStartDate(date)}
                     dateFormat="yyyy-MM-dd"
                 />
             </div>
             <div className={"crud-form-date-filter"}>
-                <label htmlFor="date">End date</label>
+                <label htmlFor="endDate">End date</label>
                 <DatePicker
-                    id={"date"}
-                    selected={selectedStartDate}
+                    id={"endDate"}
+                    selected={selectedEndDate}
                     onChange={date => handleEndDate(date)}
                     dateFormat="yyyy-MM-dd"
                 />

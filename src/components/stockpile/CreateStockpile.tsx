@@ -77,7 +77,7 @@ export const CreateStore = () => {
                     </Link>
                 </div>
                 {violations.length > 0 && <ErrorFieldHandler violations={violations} auth={false}/>}
-                <div className={"form store-form"}>
+                <div className={"form"}>
                     <form action="">
                         <div className={"link-header"}>
                             <p>

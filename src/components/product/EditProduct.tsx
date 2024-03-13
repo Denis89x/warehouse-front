@@ -119,7 +119,7 @@ export const EditProduct: React.FC = () => {
             if (error.response && error.response.data.violations) {
                 setViolations(error.response.data.violations);
             } else {
-                setViolations([{ fieldName: '', message: 'An error occurred.' }]);
+                setViolations([{fieldName: '', message: 'An error occurred.'}]);
             }
         }
     };
@@ -142,7 +142,7 @@ export const EditProduct: React.FC = () => {
                     </Link>
                 </div>
                 {violations.length > 0 && <ErrorFieldHandler violations={violations} auth={false}/>}
-                <div className={"form product-form"}>
+                <div className={"form"}>
                     <form action="">
                         <div className={"link-header"}>
                             <p>

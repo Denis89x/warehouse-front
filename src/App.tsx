@@ -23,12 +23,10 @@ import {EditStore} from "./components/stockpile/EditStockpile";
 import {OrderContextProvider} from "./components/order/OrderContext";
 import {Order} from "./components/order/Order";
 import {CreateOrder} from "./components/order/CreateOrder";
+import {ExcelPage} from "./components/excel/ExcelPage";
+import {ProfilePage} from "./components/profile/ProfilePage";
 
 function App() {
-    useEffect(() => {
-        checkAndRefreshToken();
-    }, []);
-
     return (
         <div className="App">
             <AuthProvider>
@@ -61,6 +59,10 @@ const ProtectedRouteWrapper: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        checkAndRefreshToken(navigate);
+    }, []);
+
+    useEffect(() => {
         if (!isAuthenticated) {
             navigate('/auth', {replace: true});
         } else if (window.location.pathname === '/') {
@@ -89,6 +91,8 @@ const ProtectedRoute: React.FC = () => {
                 <Route path="/edit-store/:storeId" element={<EditStore/>}/>
                 <Route path="/order" element={<Order/>}/>
                 <Route path="/create-order" element={<CreateOrder/>}/>
+                <Route path="/order-excel" element={<ExcelPage/>}/>
+                <Route path="/profile" element={<ProfilePage/>}/>
             </Routes>
         </>
     );

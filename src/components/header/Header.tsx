@@ -11,22 +11,30 @@ export const Header = () => {
                     </svg>
                 </div>
                 <div className={"header-entities"}>
-                    <Link to={"/type"}>
-                        Product type
-                    </Link>
-                    <Link to={"/product"}>
-                        Product
-                    </Link>
-                    <Link to={"/supplier"}>
-                        Supplier
-                    </Link>
-                    <Link to={"/store"}>
-                        Store
-                    </Link>
-                    <Link to={"/order"}>
-                        Order
-                    </Link>
+                    <div className={"left-side-entities"}>
+                        <Link to={"/type"}>
+                            Product type
+                        </Link>
+                        <Link to={"/product"}>
+                            Product
+                        </Link>
+                        <Link to={"/supplier"}>
+                            Supplier
+                        </Link>
+                        <Link to={"/store"}>
+                            Store
+                        </Link>
+                        <Link to={"/order"}>
+                            Order
+                        </Link>
+                    </div>
+                    <div className={"right-side-entities"}>
+                        <Link to={"/profile"}>
+                            Profile
+                        </Link>
+                    </div>
                 </div>
+
             </nav>
         </header>
     );
